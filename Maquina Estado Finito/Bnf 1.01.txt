@@ -1,0 +1,65 @@
+<lenguaje>::= <lineaCodigo>
+//linea de codigo pueden ser recursivo
+	<lineaCodigo>::= <instruciones>|<lineaCodigo>|"finP"
+
+//condicion es una esructura de seleccion 
+			<instrucciones>::= <ciclo>|<selecion>|<aritmetica>|<variables>|<metodo>
+
+		<aritmetica>::=<tipoDato><operador><tipoDato>
+		<operandor>::= +|-|*|/ 
+
+//ciclo es estructura de iteracion
+		<ciclo>::="repetir"<selecion>"fin_repetir"
+				
+//estructura de selecion 
+		<seleccion>::=<selecionSimple>|<selecionDoble>
+		<selecionSimple>::= "si" <condicion> "entonces" <instrucciones>"fin"
+		<selecionDoble>::= "si" <condicion> "entonces" <instrucciones> "entonces sino" <instrucciones> "fin"
+
+		<condicion>::= <variables> <operador> <variables> | <variables> <operador> <variables> <condición>
+        <operador> ::= + | - | * | / | && | || | > | < | >= | <=  | == | != | ++ | -- |
+
+
+//variables 
+		<variables>::="var" <tipoDato><cadena>
+		<tipoDato>::=  "int" <entero> | "float" <flotante> | "String" <cadena> | 'bool' <booleano>
+		<entero>::= <signo><digito>|<entero><digito>
+		<digito>::= 0|1|2|3|4|5|6|7|8|9
+		//~ reprecenrta el vacio
+		<signo>::="+"|"-"|"~" 
+		<flotante>::= <entero>.<entero>
+		<cadena>::=<letra>|<cadena><letra>|<cadena><entero>
+		<letra>::= a|b|c|d|e|f|g|h|i|j|k|l|m|n|ñ|o|p|q|r|s|t|u|v|w|x|y|z
+		A|B||C|D|E|F|G|H|I|J|K|L|M|N|Ñ|O|P|Q|R|S|T|U|V|W|X|Y|Z
+		<booleano>::= true | false
+		<rueda>::= "rueda"<entero>
+		
+//asignar variable
+	 <VariablesAsignacion>::= <variables> <asignar> <entero> | <variables> <asignar> <flotante>| <variables> <asignar> <cadena> | <variables> <asignar> <booleano>
+
+	 <asignar>::= "="
+
+// metodos 
+	<mover>::= <desplazar> | <mover>
+	<desplazar>::= <adelante> | <atras> | <girar> | <detener> | <camara> | <desplazar>
+
+	<girar>::= <girarRuedas> | <girarCamara> | <girar>
+	<girarRueda>::= <rueda><derecha> | <rueda><izquierda> | <girarRueda>
+    <adelante>::= "adelante" <entero> 'finAdelante' | 'adelante' <flotante> 'finAdelante'
+	<atras>::= "atras" <entero> "finAtras" | "atras" <flotante> "finAtras"
+    <detener>::= "detener"
+
+//Camara
+    <alturaActual>::= <entero> | <flotante>
+    <cambiarAltura>::= "cambiarAltura" <datoEntero> "finCambiarAltura" | "cambiarAltura" <flotante> "finCambiarAltura"
+    <inclinacionActualCamara>::= <entero> | <flotante>
+    <inclinarCamara>::= 'inclinarCamara' <datoEntero> "finInclinarCamara"| "inclinarCamara" <flotante> "finInclinarCamara"
+    <posicionActualCamara>::= <entero> | <flotante>
+    <girarCamara>::= "girarCamara" <entero> "finGirarCamara"| "girarCamara" <flotante> "finGirarCamara"    
+
+//Fotos
+    <fotos>::= <tomarFoto> | <enviarFoto>
+    <tomarFoto>::= "tomarFoto"
+    <enviarFoto>::= "enviarFoto"	
+
+      
